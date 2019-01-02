@@ -444,8 +444,8 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
-#define HEATER_1_MAXTEMP 275
+#define HEATER_0_MAXTEMP 285
+#define HEATER_1_MAXTEMP 285
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
 #define HEATER_4_MAXTEMP 275
@@ -475,10 +475,15 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // Printoni
-  #define  DEFAULT_Kp 24.53
-  #define  DEFAULT_Ki 1.85
-  #define  DEFAULT_Kd 81.39
+  // Printoni v6
+  //#define  DEFAULT_Kp 24.53
+  //#define  DEFAULT_Ki 1.85
+  //#define  DEFAULT_Kd 81.39
+  // Printoni Chimera+
+  #define DEFAULT_Kp 29.77
+  #define DEFAULT_Ki 2.69
+  #define DEFAULT_Kd 82.31
+
   
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -678,7 +683,7 @@
 //#define Y2_DRIVER_TYPE DRV8825
 //#define Z2_DRIVER_TYPE DRV8825
 #define E0_DRIVER_TYPE DRV8825
-//#define E1_DRIVER_TYPE DRV8825
+#define E1_DRIVER_TYPE DRV8825
 //#define E2_DRIVER_TYPE DRV8825
 //#define E3_DRIVER_TYPE DRV8825
 //#define E4_DRIVER_TYPE DRV8825
@@ -727,7 +732,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 902 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 830 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -929,13 +934,13 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 25, 00, -2.5 }
+#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -3.35 }
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 20
+#define MIN_PROBE_EDGE 15
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 8000
+#define XY_PROBE_SPEED 5000
 
 // Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1035,8 +1040,8 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
-#define INVERT_E1_DIR false
+#define INVERT_E0_DIR false
+#define INVERT_E1_DIR true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1060,15 +1065,15 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 210
-#define Y_BED_SIZE 210
+#define X_BED_SIZE 200
+#define Y_BED_SIZE 185
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -20
-#define Y_MIN_POS -40
+#define X_MIN_POS 0
+#define Y_MIN_POS -20
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS (Y_BED_SIZE + 20)
+#define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 200
 
 /**
@@ -1227,10 +1232,10 @@
   //#define FRONT_PROBE_BED_POSITION 45
   //#define BACK_PROBE_BED_POSITION 130 //190
 
-  #define LEFT_PROBE_BED_POSITION MIN_PROBE_EDGE
-  #define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - MIN_PROBE_EDGE)
+  #define LEFT_PROBE_BED_POSITION 50
+  #define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - 15)
   #define FRONT_PROBE_BED_POSITION MIN_PROBE_EDGE
-  #define BACK_PROBE_BED_POSITION (Y_BED_SIZE - MIN_PROBE_EDGE - 15)
+  #define BACK_PROBE_BED_POSITION (Y_BED_SIZE - 40)
   
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
