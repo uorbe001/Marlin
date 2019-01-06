@@ -678,11 +678,11 @@
  */
 #define X_DRIVER_TYPE  TMC2130
 #define Y_DRIVER_TYPE  TMC2130
-#define Z_DRIVER_TYPE  TMC2130
+#define Z_DRIVER_TYPE  DRV8825
 //#define X2_DRIVER_TYPE DRV8825
 //#define Y2_DRIVER_TYPE DRV8825
 //#define Z2_DRIVER_TYPE DRV8825
-#define E0_DRIVER_TYPE DRV8825
+#define E0_DRIVER_TYPE TMC2130
 #define E1_DRIVER_TYPE DRV8825
 //#define E2_DRIVER_TYPE DRV8825
 //#define E3_DRIVER_TYPE DRV8825
@@ -732,7 +732,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 830 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 3200, 830 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -934,7 +934,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -3.35 }
+#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -3.4 }
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 15
@@ -1035,12 +1035,12 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR true
 #define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_Z_DIR true
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
