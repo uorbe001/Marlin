@@ -678,12 +678,12 @@
  */
 #define X_DRIVER_TYPE  TMC2130
 #define Y_DRIVER_TYPE  TMC2130
-#define Z_DRIVER_TYPE  DRV8825
+#define Z_DRIVER_TYPE  TMC2208
 //#define X2_DRIVER_TYPE DRV8825
 //#define Y2_DRIVER_TYPE DRV8825
 //#define Z2_DRIVER_TYPE DRV8825
-#define E0_DRIVER_TYPE TMC2130
-#define E1_DRIVER_TYPE DRV8825
+#define E0_DRIVER_TYPE TMC2208
+#define E1_DRIVER_TYPE TMC2130
 //#define E2_DRIVER_TYPE DRV8825
 //#define E3_DRIVER_TYPE DRV8825
 //#define E4_DRIVER_TYPE DRV8825
@@ -752,7 +752,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 300, 300, 10, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 500, 500, 10, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -767,7 +767,7 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          300    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
@@ -934,10 +934,10 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -3.4 }
+#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -1.5 }
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 15
+#define MIN_PROBE_EDGE 25
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 5000
@@ -1035,13 +1035,13 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR true
 #define INVERT_Y_DIR true
-#define INVERT_Z_DIR true
+#define INVERT_Z_DIR false
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
 #define INVERT_E0_DIR true
-#define INVERT_E1_DIR true
+#define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1065,7 +1065,7 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 200
+#define X_BED_SIZE 180
 #define Y_BED_SIZE 185
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
@@ -1177,15 +1177,15 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
+//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1209,11 +1209,11 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
-    #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
+    #define MESH_TEST_NOZZLE_SIZE    0.25  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
-    #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
+    #define MESH_TEST_HOTEND_TEMP  195    // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
     #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for the G26 Mesh Validation Tool.
     #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.
   #endif
@@ -1266,9 +1266,11 @@
 
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
+  #define MESH_INSET 15              // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
+  #define MESH_MIN_X 55
+  
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500

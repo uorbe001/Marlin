@@ -1940,9 +1940,9 @@
   //#define TMC_SW_MISO       -1
   //#define TMC_SW_SCK        -1
   
-  #define X_CS_PIN 44
+  #define X_CS_PIN 59
   #define Y_CS_PIN 64
-  #define E1_CS_PIN 59
+  #define E1_CS_PIN 63
 
   /**
    * Four TMC2209 drivers can use the same HW/SW serial port with hardware configured addresses.
@@ -2530,7 +2530,7 @@
   //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
   #define USER_SCRIPT_DONE "M117 User Script Done"
   #define USER_SCRIPT_AUDIBLE_FEEDBACK
-  //#define USER_SCRIPT_RETURN  // Return to status screen after a script
+  #define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   //#define USER_DESC_1 "Home & UBL Info"
   //#define USER_GCODE_1 "G28\nG29 W"
@@ -2541,11 +2541,11 @@
   #define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
   #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
-  //#define USER_DESC_4 "Heat Bed/Home/Level"
-  //#define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
+  #define USER_DESC_4 "H0 Extrude 10mm"
+  #define USER_GCODE_4 "T0\nG92 E0\nG1 E10 F100"
 
-  //#define USER_DESC_5 "Home & Info"
-  //#define USER_GCODE_5 "G28\nM503"
+  #define USER_DESC_5 "H1 Extrude 10mm"
+  #define USER_GCODE_5 "T1\nG92 E0\nG1 E10 F100"
 #endif
 
 /**
