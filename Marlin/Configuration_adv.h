@@ -1353,10 +1353,10 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.22    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1820,66 +1820,65 @@
   #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
-<<<<<<< HEAD
   #if AXIS_IS_TMC(X)
     #define X_CURRENT     800  // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_MICROSTEPS   32  // 0..256
+    #define X_MICROSTEPS   16  // 0..256
     #define X_RSENSE     0.11
     #define X_CHAIN_POS    -1  // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
   #endif
 
   #if AXIS_IS_TMC(X2)
     #define X2_CURRENT    800
-    #define X2_MICROSTEPS  32
+    #define X2_MICROSTEPS  16
     #define X2_RSENSE    0.11
     #define X2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(Y)
     #define Y_CURRENT     800
-    #define Y_MICROSTEPS   32
+    #define Y_MICROSTEPS   16
     #define Y_RSENSE     0.11
     #define Y_CHAIN_POS    -1
   #endif
 
   #if AXIS_IS_TMC(Y2)
     #define Y2_CURRENT    800
-    #define Y2_MICROSTEPS  32
+    #define Y2_MICROSTEPS  16
     #define Y2_RSENSE    0.11
     #define Y2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT     800
-    #define Z_MICROSTEPS   32
+    #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.11
     #define Z_CHAIN_POS    -1
   #endif
 
   #if AXIS_IS_TMC(Z2)
     #define Z2_CURRENT    800
-    #define Z2_MICROSTEPS  32
+    #define Z2_MICROSTEPS  16
     #define Z2_RSENSE    0.11
     #define Z2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(Z3)
     #define Z3_CURRENT    800
-    #define Z3_MICROSTEPS  32
+    #define Z3_MICROSTEPS  16
     #define Z3_RSENSE    0.11
     #define Z3_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT    800
-    #define E0_MICROSTEPS  32
+    #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
     #define E0_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E1)
     #define E1_CURRENT    800
-    #define E1_MICROSTEPS  32
+    #define E1_MICROSTEPS  16
     #define E1_RSENSE    0.11
     #define E1_CHAIN_POS   -1
   #endif
@@ -2031,10 +2030,10 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     105  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    105
-  #define Y_HYBRID_THRESHOLD     105
-  #define Y2_HYBRID_THRESHOLD    105
+  #define X_HYBRID_THRESHOLD     120  // [mm/s]
+  #define X2_HYBRID_THRESHOLD    120
+  #define Y_HYBRID_THRESHOLD     120
+  #define Y2_HYBRID_THRESHOLD    120
   #define Z_HYBRID_THRESHOLD       3
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
@@ -2082,9 +2081,9 @@
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
-    #define X_STALL_SENSITIVITY  8
+    #define X_STALL_SENSITIVITY  15
     #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
-    #define Y_STALL_SENSITIVITY  8
+    #define Y_STALL_SENSITIVITY  15
     //#define Z_STALL_SENSITIVITY  8
     //#define SPI_ENDSTOPS              // TMC2130 only
     //#define IMPROVE_HOMING_RELIABILITY
@@ -2100,7 +2099,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * You can set your own advanced settings by filling in predefined functions.

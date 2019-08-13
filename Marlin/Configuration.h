@@ -732,7 +732,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 3200, 830 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 1600, 415 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -934,7 +934,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -1.5 }
+#define NOZZLE_TO_PROBE_OFFSET { 45, -40, -1.45 }
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 25
@@ -1033,7 +1033,7 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true
+#define INVERT_X_DIR false
 #define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
 
